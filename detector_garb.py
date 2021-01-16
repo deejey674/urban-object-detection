@@ -85,7 +85,7 @@ def detect_video(model, args):
 
 
     colors = pkl.load(open("pallete", "rb"))
-    classes = load_classes("cfg/garb.names")
+    classes = load_classes("cfg/cigarettes.names")
 
     if args.webcam:
         cap = cv2.VideoCapture(0)
@@ -161,7 +161,7 @@ def detect_image(model, args):
 
     # load colors and classes
     colors = pkl.load(open("pallete", "rb"))
-    classes = load_classes("cfg/garb.names")
+    classes = load_classes("cfg/cigarettes.names")
 
     if not osp.exists(args.outdir):
         os.makedirs(args.outdir)
@@ -204,8 +204,8 @@ def main():
         sys.exit(1)
 
     print('Loading network...')
-    model = Darknet("cfg/yolov3_garb_9_test.cfg")
-    model.load_weights('weights/yolov3_garb.backup')
+    model = Darknet("cfg/yolov3_cigarettes.cfg")
+    model.load_weights('weights/cigarettes.weights')
     if args.cuda:
         model.cuda()
 
